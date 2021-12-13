@@ -7,12 +7,12 @@ export const UPDATE_EMPLOYEE_SUCCESS = 'UPDATE_EMPLOYEE_SUCCESS';
 export const DELETE_EMPLOYEE_SUCCESS = 'DELETE_EMPLOYEE_SUCCESS';
 
 interface EmployeesAsync {
-    Employees: Employee[];
+    employees: Employee[];
     error: string;
 }
 
 interface EmployeeAsync {
-    Employee: Employee;
+    employee: Employee;
     error: string;
 }
 
