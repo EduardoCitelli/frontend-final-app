@@ -3,7 +3,7 @@ import './header-employee.css';
 function HeaderEmployee() {
     return (
         <>
-            <h2 className="title">🌟EMployees🌟</h2>
+            <h2 className="title">🌟Employees🌟</h2>
         </>
     )
 }

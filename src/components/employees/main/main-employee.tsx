@@ -12,6 +12,7 @@ import HeaderEmployee from '../header/header-employee';
 import ListEmployees from '../list/list-employees';
 import SimpleModal from '../../shared/modal/modal';
 import Spinner from '../../shared/spinner/spinner';
+import EmployeeForm from '../add/add-employee';
 
 interface StateProps {
     employees: Employee[];
@@ -44,15 +45,23 @@ function MainEmployee(props: LinkProps) {
 
     return (
         <>
-            <HeaderEmployee/>
+            <HeaderEmployee />
 
             {
                 props.loading ? (<Spinner />) : (
-                    <ListEmployees 
-                        employees={props.employees}
-                        deleteEmployee={props.deleteEmployees}
-                        updateEmployee={props.saveEmployees}
-                    />
+                    <>
+                        <SimpleModal
+                            buttonColor="primary"
+                            text="Create Employee ➕"
+                            title="New Employee"
+                            children={<EmployeeForm addEmployee={props.saveEmployees} />}
+                        />
+                        <ListEmployees
+                            employees={props.employees}
+                            deleteEmployee={props.deleteEmployees}
+                            updateEmployee={props.saveEmployees}
+                        />
+                    </>
                 )
             }
         </>
