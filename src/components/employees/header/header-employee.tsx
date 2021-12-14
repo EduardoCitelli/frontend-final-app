@@ -1,6 +1,6 @@
 import './header-employee.css';
 
-function HeaderUser() {
+function HeaderEmployee() {
     return (
         <>
             <h2 className="title">🌟EMployees🌟</h2>
@@ -8,4 +8,4 @@ function HeaderUser() {
     )
 }
 
-export default HeaderUser;
+export default HeaderEmployee;

@@ -5,8 +5,8 @@ import DeleteEmployee from '../delete/delete-employee';
 
 interface Props {
     employees: Employee[],
-    deleteEmployee: (id: String) => void;
-    updateEmployee: (id: String) => void;
+    deleteEmployee: (id: string) => void;
+    updateEmployee: (employee: Employee) => void;
 }
 
 function ListEmployees(props: Props) {
