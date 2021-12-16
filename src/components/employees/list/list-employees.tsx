@@ -1,7 +1,8 @@
 import './list-employees.css';
-import { Employee } from '../../../models/Employee';
+import { Employee, EmployeeArea } from '../../../models/Employee';
 import SimpleModal from '../../shared/modal/modal';
 import DeleteEmployee from '../delete/delete-employee';
+import EmployeeForm from '../add/add-employee';
 
 interface Props {
     employees: Employee[],
@@ -15,24 +16,23 @@ function ListEmployees(props: Props) {
             {
                 props.employees.map(employee => (
                     <div key={employee.id} className='card'>
-                        <h3>{employee.name} - {employee.surname}</h3>
+                        <h2>{employee.name} - {employee.surname}</h2>
                         <p>Email: {employee.email}</p>
                         <p>Phone: {employee.phone}</p>
-                        <p>Area: {employee.area}</p>
+                        <p>Area: {EmployeeArea[employee.area]}</p>
                         <hr />
 
                         <div className="button-panel">
-                            {/* <SimpleModal
-                            buttonColor="primary"
-                            text="Edit ✍"
-                            title="Edit Employee"
-                            children={undefined}
-                            // children={
-                            //     <UserForm
-                            //         addUser={props.updateEmployee}
-                            //         updaterUser={employee} />
-                            // }
-                        /> */}
+                            <SimpleModal
+                                buttonColor="primary"
+                                text="Edit ✍"
+                                title="Edit Employee"
+                                children={
+                                    <EmployeeForm
+                                        addEmployee={props.updateEmployee}
+                                        updateEmployee={employee} />
+                                }
+                            />
                             <SimpleModal
                                 buttonColor="error"
                                 text="Delete 🗑"

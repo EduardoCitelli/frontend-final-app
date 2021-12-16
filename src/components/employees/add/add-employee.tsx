@@ -1,9 +1,9 @@
 import './add-employee.css'
 
 import { FormApi } from "final-form";
-import { Form } from 'react-final-form'
+import { Field, Form } from 'react-final-form'
 import { Employee, EmployeeArea } from "../../../models/Employee";
-import { Button } from '@mui/material';
+import { Button, InputLabel, MenuItem, Select } from '@mui/material';
 import TextInput from '../../shared/text-input/textInput';
 
 interface Props {
@@ -53,13 +53,31 @@ function EmployeeForm(props: Props) {
                         name="phone"
                         placeHolder="Phone"
                         type="tel"
-                        required={false} />
+                        required={true} />
                     <TextInput
                         name="email"
                         placeHolder="Email"
                         type="email"
                         required={true}
                     />
+
+                    <Field
+                        name="area"
+                    >
+                        {({ input }) => (
+                            <div className='select-area'>
+                                <InputLabel id="employee-area-select-label">Employee Area</InputLabel>
+                                <Select {...input}
+                                    labelId="employee-area-select-label"
+                                    value={values.area}
+                                >
+                                    <MenuItem value={EmployeeArea.RRHH}>{EmployeeArea[EmployeeArea.RRHH]}</MenuItem>
+                                    <MenuItem value={EmployeeArea.ACCOUNTING}>{EmployeeArea[EmployeeArea.ACCOUNTING]}</MenuItem>
+                                    <MenuItem value={EmployeeArea.MARKETING}>{EmployeeArea[EmployeeArea.MARKETING]}</MenuItem>
+                                </Select>
+                            </div>
+                        )}
+                    </Field>
                     <div>
                         <Button
                             disabled={submitting || pristine}

@@ -39,9 +39,11 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, {}, AppActions>) =
 });
 
 function MainEmployee(props: LinkProps) {
+    const { requestEmployees } = props;
+
     useEffect(() => {
-        props.requestEmployees();
-    }, []);
+        requestEmployees();
+    }, [requestEmployees]);
 
     return (
         <>
