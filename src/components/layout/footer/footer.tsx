@@ -16,7 +16,7 @@ function Footer() {
 
             {
                 user ?
-                    (<Button variant='contained' color='info' onClick={signOut}>
+                    (<Button variant='contained' color='success' onClick={signOut}>
                         SignOut
                     </Button>)
                     :

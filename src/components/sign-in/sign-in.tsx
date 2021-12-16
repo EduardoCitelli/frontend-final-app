@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { auth } from '../../utils/firabase';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 interface UserLogin {
   email: string,
@@ -20,10 +21,14 @@ interface UserLogin {
 
 const theme = createTheme();
 
-export default function SignIn() {  
+export default function SignIn() {
   const history = useHistory();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {    
+  useEffect(() => {
+    auth.signOut();
+  }, []);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
 
     const data = new FormData(event.currentTarget);
@@ -34,14 +39,14 @@ export default function SignIn() {
     };
 
     auth.signInWithEmailAndPassword(login.email, login.password)
-      .then(result => {
+      .then(() => {
         history.push('/');
       })
       .catch(error => {
         console.log(error.message);
         alert("user or password incorrect");
       });
-  };
+  }
 
   return (
     <ThemeProvider theme={theme}>
