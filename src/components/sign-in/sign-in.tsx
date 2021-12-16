@@ -5,52 +5,41 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { auth } from '../../utils/firabase';
+import { useHistory } from 'react-router-dom';
 
 interface UserLogin {
   email: string,
   password: string,
 }
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+export default function SignIn() {  
+  const history = useHistory();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {    
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
+
     const login: UserLogin = {
-      email: data.get('email')?.toString() as string,
-      password: data.get('password')?.toString() as string,
+      email: data.get('email')!.toString(),
+      password: data.get('password')!.toString(),
     };
 
     auth.signInWithEmailAndPassword(login.email, login.password)
       .then(result => {
-        console.log(result);
+        history.push('/');
       })
       .catch(error => {
-        console.log(error);
-        alert("er");
+        console.log(error.message);
+        alert("user or password incorrect");
       });
   };
 
@@ -107,7 +96,6 @@ export default function SignIn() {
             </Button>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

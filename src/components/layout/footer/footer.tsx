@@ -1,8 +1,28 @@
+import { Button } from '@mui/material';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/auth-context';
+import { auth } from '../../../utils/firabase';
 import styles from './footer.module.css'
 
 function Footer() {
+    const signOut = async () => {
+        await auth.signOut();
+    };
+
+    const user = useContext(AuthContext);
+
     return (
         <footer className={styles.footer}>
+
+            {
+                user ?
+                    (<Button variant='contained' color='info' onClick={signOut}>
+                        SignOut
+                    </Button>)
+                    :
+                    (<></>)
+
+            }
             <a
                 href="https://github.com/EduardoCitelli"
                 target="_blank"
