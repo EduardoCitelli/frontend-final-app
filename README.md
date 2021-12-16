@@ -51,7 +51,7 @@ For this, a simple Front End Application was requested that has the basic "CRUD"
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Creation of Users with Web Application
+:heavy_check_mark: Creation of Employees with Web Application
 
 ## :rocket: Technologies ##
 
@@ -67,7 +67,7 @@ The following tools were used in this project:
 
 To run this project, you will need to add the following environment variables to your ``` .env ``` file
 
-``` REACT_APP_API_URL ```, being the url where you has the API or use this https://api-mcga-first.herokuapp.com/.
+``` REACT_APP_API_URL ```, being the url where you has the API or use this https://api-mcga-final.herokuapp.com/.
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
