@@ -5,6 +5,7 @@ import Main from './components/layout/main/main';
 import PageNotFound from './components/layout/PageNotFound';
 import Footer from './components/layout/footer/footer';
 import mainEmployee from './components/employees/main/main-employee';
+import SignIn from './components/sign-in/sign-in';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Main} />
             <Route exact path="/employees" component={mainEmployee} />
+            <Route exact path="/login" component={SignIn} />
             <Route component={PageNotFound} />
           </Switch>
         </main>
